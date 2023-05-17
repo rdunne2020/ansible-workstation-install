@@ -1,0 +1,4 @@
+---
+dotfile_repo: "https://github.com/rdunne2020/dotfiles.git"
+dotfile_repo_branch: master
+dotfile_local_location: "~/Code/Dotfiles"

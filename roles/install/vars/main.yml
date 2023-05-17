@@ -1,0 +1,20 @@
+---
+dnf_packages:
+  - alacritty
+  - code
+  - ffmpeg
+  - flatpak
+  - fzf
+  - git
+  - neofetch
+  - neovim
+  - nodejs
+  - ranger
+  - ripgrep
+  - stow
+  - zsh
+  - zoxide
+
+
+flatpaks:
+  - obsidian

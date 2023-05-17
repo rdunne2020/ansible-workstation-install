@@ -1,0 +1,7 @@
+---
+cargo_installs:
+  - bat
+  - duf
+  - dust
+  - fd
+  - ripgrep

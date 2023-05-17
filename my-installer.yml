@@ -1,0 +1,18 @@
+---
+- name: Linux Installer
+  hosts: all
+  remote_user: root
+  collections:
+    - community.general
+  roles:
+    - role: install
+      become: true
+    - role: install_rust
+      become: false
+      remote_user: "{{ setup_user }}"
+    - role: cargo_install
+      become: false
+      remote_user: "{{ setup_user }}"
+    - role: dotfile
+      become: false
+      remote_user: "{{ setup_user }}"

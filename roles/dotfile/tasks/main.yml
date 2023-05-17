@@ -1,0 +1,27 @@
+---
+- name: Verify that your dotfile directory exists
+  stat:
+    path: "{{ dotfile_local_location }}"
+  register: dotfile_dir_info
+
+- name: Create the dotfile directory if it doesn't exist
+  file:
+    path: "{{ dotfile_local_location }}"
+    state: directory
+    mode: "0755"
+
+- name: Clone git dotfiles repo
+  git:
+    repo: "{{ dotfile_repo }}"
+    dest: "{{ dotfile_local_location }}"
+    version: "{{ dotfile_repo_branch }}"
+  become: false
+
+- name: Use GNU Stow to place all dotfiles
+  command: stow -d {{ dotfile_local_location|quote }} -t ~/
+
+- name: Set ZSH as default shell
+  become: true
+  user:
+    name: "{{ ansible_env.USER }}"
+    shell: /usr/bin/zsh

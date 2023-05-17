@@ -1,0 +1,21 @@
+---
+# TODO: Should likely just become user for this one role. Since cargo is more user based
+- name: Check if Cargo is installed
+  command: which cargo
+  register: cargo_exists
+  ignore_errors: true
+
+- name: Setup the installer script for rustup
+  get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/sh.rustup.rs
+    mode: "0755"
+    force: true
+  tags:
+    - rust
+
+- name: Run the installer
+  shell: /tmp/sh.rustup.rs -y
+  tags:
+    - rust
+  when: cargo_exists is failed

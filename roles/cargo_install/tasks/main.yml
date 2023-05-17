@@ -1,0 +1,6 @@
+---
+# TODO: This needs to be done at a user level
+- name: Install Cargo Packages
+  community.general.cargo:
+   name: "{{ item }}"
+  loop: "{{ cargo_installs }}"
