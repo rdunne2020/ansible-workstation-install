@@ -2,6 +2,5 @@
 cargo_installs:
   - bat
   - duf
-  - dust
-  - fd
+  - du-dust
   - ripgrep

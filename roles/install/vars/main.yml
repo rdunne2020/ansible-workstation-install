@@ -2,9 +2,13 @@
 dnf_packages:
   - alacritty
   - code
+  - exa
+  - fd-find
   - ffmpeg
   - flatpak
   - fzf
+  - gcc
+  - g++
   - git
   - neofetch
   - neovim
@@ -12,6 +16,7 @@ dnf_packages:
   - ranger
   - ripgrep
   - stow
+  - tmux
   - zsh
   - zoxide
 

@@ -17,6 +17,7 @@
     version: "{{ dotfile_repo_branch }}"
   become: false
 
+# Use custom module for this, this is bunk
 - name: Use GNU Stow to place all dotfiles
   command: stow -d {{ dotfile_local_location|quote }} -t ~/
 
