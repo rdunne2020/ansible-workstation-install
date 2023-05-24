@@ -34,7 +34,7 @@
     name: code
     description: Repo with VSCode Package
     baseurl: "https://packages.microsoft.com/yumrepos/vscode"
-    gpcakey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgcakey: "https://packages.microsoft.com/keys/microsoft.asc"
 
 - name: Update DNF Cache
   dnf:

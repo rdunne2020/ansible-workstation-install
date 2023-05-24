@@ -1,4 +1,10 @@
 ---
 dotfile_repo: "https://github.com/rdunne2020/dotfiles.git"
-dotfile_repo_branch: master
+dotfile_repo_branch: main
 dotfile_local_location: "~/Code/Dotfiles"
+dotfile_packages:
+  - alacritty
+  - nvim
+  - ranger
+  - tmux
+  - zsh
