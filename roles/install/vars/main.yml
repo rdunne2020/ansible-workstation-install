@@ -2,6 +2,8 @@
 dnf_packages:
   - alacritty
   - code
+  - bat
+  - duf
   - exa
   - fd-find
   - ffmpeg
@@ -17,6 +19,7 @@ dnf_packages:
   - ripgrep
   - stow
   - tmux
+  - unzip # necessary for Mason
   - zsh
   - zoxide
 

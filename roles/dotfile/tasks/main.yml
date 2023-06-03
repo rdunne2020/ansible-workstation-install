@@ -36,5 +36,18 @@
 - name: Set ZSH as default shell
   become: true
   user:
-    name: "{{ ansible_env.USER }}"
+    name: "{{ setup_user }}"
     shell: /usr/bin/zsh
+
+- name: Download zap installer
+  uri:
+    url: https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh
+    dest: /tmp/install.zsh
+
+- name: Install ZAP ZSH Plugin
+  command: /usr/bin/zsh /tmp/install.sh --keep --branch release-v1
+
+- name: Clone getnf repo
+  git:
+    repo: "https://github.com/ronniedroid/getnf"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') + '/Code' }}"

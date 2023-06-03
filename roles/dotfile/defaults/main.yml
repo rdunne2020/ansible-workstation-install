@@ -5,6 +5,6 @@ dotfile_local_location: "~/Code/Dotfiles"
 dotfile_packages:
   - alacritty
   - nvim
-  - ranger
+  #- ranger
   - tmux
   - zsh

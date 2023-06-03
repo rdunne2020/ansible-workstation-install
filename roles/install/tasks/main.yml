@@ -45,4 +45,5 @@
   dnf:
     name: "{{ item }}"
     state: present
+    allowerasing: true
   loop: "{{ dnf_packages }}"

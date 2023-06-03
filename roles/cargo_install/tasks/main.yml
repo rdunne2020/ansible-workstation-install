@@ -1,5 +1,5 @@
 ---
-# TODO: This needs to be done at a user level
+# TODO: Make sure the cargo binary can be found
 - name: Install Cargo Packages
   community.general.cargo:
    name: "{{ item }}"
