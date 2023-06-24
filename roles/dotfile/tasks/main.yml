@@ -27,6 +27,7 @@
     path: "{{ config_dir }}"
     state: directory
     mode: "0755"
+  when: config_dir.stat.name == false
 
 # Use custom module for this, this is bunk
 - name: Use GNU Stow to place all dotfiles
@@ -45,9 +46,9 @@
     dest: /tmp/install.zsh
 
 - name: Install ZAP ZSH Plugin
-  command: /usr/bin/zsh /tmp/install.sh --keep --branch release-v1
+  command: /usr/bin/zsh /tmp/install.zsh --keep --branch release-v1
 
 - name: Clone getnf repo
   git:
     repo: "https://github.com/ronniedroid/getnf"
-    dest: "{{ lookup('ansible.builtin.env', 'HOME') + '/Code' }}"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') + '/Code/getnf' }}"
