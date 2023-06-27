@@ -3,4 +3,6 @@
 - name: Install Cargo Packages
   community.general.cargo:
    name: "{{ item }}"
+  environment:
+    PATH: "/home/{{ ansible_user }}/.cargo/bin:{{ ansible_env.PATH }}"
   loop: "{{ cargo_installs }}"

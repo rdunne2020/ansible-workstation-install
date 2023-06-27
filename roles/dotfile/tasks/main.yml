@@ -27,7 +27,7 @@
     path: "{{ config_dir }}"
     state: directory
     mode: "0755"
-  when: config_dir.stat.name == false
+  when: config_dir.stat.isdir == false
 
 # Use custom module for this, this is bunk
 - name: Use GNU Stow to place all dotfiles
