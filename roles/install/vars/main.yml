@@ -15,6 +15,7 @@ dnf_packages:
   - neofetch
   - neovim
   - nodejs
+  - python3-pip
   - ranger
   - ripgrep
   - stow
