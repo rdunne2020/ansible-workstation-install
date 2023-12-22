@@ -1,6 +1,6 @@
 ---
 # tasks file for installing packages
-- name: Add RPM Fustion Free Repo Key
+- name: Add RPM Fusion Free Repo Key
   rpm_key:
     key: "https://rpmfusion.org/keys?action=AttachFile&do=get&target=RPM-GPG-KEY-rpmfusion-free-fedora-2020"
     state: present
@@ -47,3 +47,4 @@
     state: present
     allowerasing: true
   loop: "{{ dnf_packages }}"
+  ignore_errors: true

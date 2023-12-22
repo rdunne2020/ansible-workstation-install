@@ -24,10 +24,10 @@
 
 - name: Create the config directory if it doesn't exist
   file:
-    path: "{{ config_dir }}"
+    path: "{{ config_dir.stat.path }}"
     state: directory
     mode: "0755"
-  when: config_dir.stat.isdir == false
+  when: not config_dir.stat.exists
 
 # Use custom module for this, this is bunk
 - name: Use GNU Stow to place all dotfiles

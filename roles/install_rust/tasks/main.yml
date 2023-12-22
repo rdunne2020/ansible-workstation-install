@@ -5,6 +5,11 @@
   register: cargo_exists
   ignore_errors: true
 
+- name: Check if the installer was already downloaded
+  stat:
+    path: /tmp/sh.rustup.rs
+  register: installer_info
+
 - name: Setup the installer script for rustup
   get_url:
     url: https://sh.rustup.rs
@@ -13,6 +18,7 @@
     force: true
   tags:
     - rust
+  when: not installer_info.stat.exists
 
 - name: Run the installer
   shell: /tmp/sh.rustup.rs -y
