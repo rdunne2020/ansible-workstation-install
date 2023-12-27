@@ -12,6 +12,7 @@ dnf_packages:
   - gcc
   - g++
   - git
+  - git-filter-repo
   - neofetch
   - neovim
   - nodejs
