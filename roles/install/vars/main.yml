@@ -15,8 +15,9 @@ dnf_packages:
   - git-filter-repo
   - neofetch
   - neovim
-  - nodejs
+  # - nodejs
   - python3-pip
+  - pipx
   - ranger
   - ripgrep
   - stow
@@ -24,7 +25,8 @@ dnf_packages:
   - unzip # necessary for Mason
   - zsh
   - zoxide
-
+  # COPR
+  - wezterm
 
 flatpaks:
   - obsidian

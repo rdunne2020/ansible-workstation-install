@@ -17,17 +17,11 @@
     version: "{{ dotfile_repo_branch }}"
   become: false
 
-- name: Verify that your HOME/.config directory exists
-  stat:
-    path: "{{ lookup('ansible.builtin.env', 'HOME') + '/.config' }}"
-  register: config_dir
-
 - name: Create the config directory if it doesn't exist
   file:
-    path: "{{ config_dir.stat.path }}"
+    path: "{{ ansible_env.HOME }}/.config"
     state: directory
     mode: "0755"
-  when: not config_dir.stat.exists
 
 # Use custom module for this, this is bunk
 - name: Use GNU Stow to place all dotfiles
@@ -37,7 +31,7 @@
 - name: Set ZSH as default shell
   become: true
   user:
-    name: "{{ setup_user }}"
+    name: "{{ ansible_user }}"
     shell: /usr/bin/zsh
 
 - name: Download zap installer
@@ -51,4 +45,4 @@
 - name: Clone getnf repo
   git:
     repo: "https://github.com/ronniedroid/getnf"
-    dest: "{{ lookup('ansible.builtin.env', 'HOME') + '/Code/getnf' }}"
+    dest: "{{ ansible_env.HOME }}/Code/getnf"

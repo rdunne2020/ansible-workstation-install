@@ -36,6 +36,11 @@
     baseurl: "https://packages.microsoft.com/yumrepos/vscode"
     gpgcakey: "https://packages.microsoft.com/keys/microsoft.asc"
 
+- name: Add Wezterm COPR Repo
+  community.general.copr:
+    state: enabled
+    name: wezfurlong/wezterm-nightly
+
 - name: Update DNF Cache
   dnf:
     name: "*"
@@ -48,3 +53,17 @@
     allowerasing: true
   loop: "{{ dnf_packages }}"
   ignore_errors: true
+
+- name: Install NVM
+  ansible.builtin.shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: Install Node using NVM
+      shell: |
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        nvm install node
+      environment:
+        HOME: "{{ ansible_env.HOME }}"
