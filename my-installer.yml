@@ -1,12 +1,13 @@
 ---
 - name: Linux Installer
   hosts: all
-  remote_user: root
   collections:
     - community.general
   roles:
     - role: install
+      ansible_become_method: su
       become: true
+      become_user: root
     - role: install_rust
       become: false
       remote_user: "{{ setup_user }}"
@@ -15,4 +16,4 @@
       remote_user: "{{ setup_user }}"
     - role: dotfile
       become: false
-      remote_user: "{{ setup_user }}"
+      ansible_become_method: su
