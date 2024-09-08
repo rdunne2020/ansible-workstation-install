@@ -7,4 +7,5 @@ dotfile_packages:
   - nvim
   #- ranger
   - tmux
+  - wezterm
   - zsh
