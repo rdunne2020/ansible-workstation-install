@@ -10,10 +10,10 @@
       become_user: root
     - role: install_rust
       become: false
-      remote_user: "{{ setup_user }}"
+      remote_user: "{{ ansible_user }}"
     - role: cargo_install
       become: false
-      remote_user: "{{ setup_user }}"
+      remote_user: "{{ ansible_user }}"
     - role: dotfile
       become: false
       ansible_become_method: su

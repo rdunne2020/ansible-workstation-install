@@ -54,16 +54,19 @@
   loop: "{{ dnf_packages }}"
   ignore_errors: true
 
-- name: Install NVM
-  ansible.builtin.shell: >
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-  args:
-    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+- block:
+  - name: Download NVM Installer
+    ansible.builtin.shell: >
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+    args:
+      creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
-- name: Install Node using NVM
-      shell: |
-        export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-        nvm install node
-      environment:
-        HOME: "{{ ansible_env.HOME }}"
+  - name: Install Node using NVM
+    shell: |
+      export NVM_DIR="$HOME/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+      nvm install node
+    environment:
+      HOME: "{{ ansible_env.HOME }}"
+  become: true
+  become_user: "{{ ansible_user }}"

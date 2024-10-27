@@ -2,8 +2,6 @@
 dnf_packages:
   - alacritty
   - code
-  - bat
-  - duf
   - exa
   - fd-find
   - ffmpeg
@@ -15,11 +13,9 @@ dnf_packages:
   - git-filter-repo
   - neofetch
   - neovim
-  # - nodejs
   - python3-pip
   - pipx
   - ranger
-  - ripgrep
   - stow
   - tmux
   - unzip # necessary for Mason
@@ -27,6 +23,10 @@ dnf_packages:
   - zoxide
   # COPR
   - wezterm
+  # Cargo
+  # - bat
+  # - duf
+  # - ripgrep
 
 flatpaks:
   - obsidian
