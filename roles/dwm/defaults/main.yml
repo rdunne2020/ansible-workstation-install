@@ -1,0 +1,4 @@
+---
+dwm_repo: "https://github.com/rdunne2020/virtual-dwm.git"
+dwm_branch: main
+dwm_location: "~/Code/virtual-dwm"

@@ -1,0 +1,40 @@
+---
+- name: Install DWM Dependencies
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: preset
+    allowerasing: true
+  loop: "{{ dwm_packages }}"
+  become: true
+  become_user: root
+  become_method: su
+
+- name: Clone VirtualDWM
+  ansible.builtin.git:
+    repo: "{{ dwm_repo }}"
+    dest: "{{ dwm_location }}"
+    version: "{{ dwm_branch }}"
+
+- name: Build DWM Binary (Dev)
+  ansible.builtin.command:
+    chdir: "{{ dwm_location }}"
+    cmd: bear -- make
+    creates: "{{ dwm_location}}/dwm"
+  when: dwm_dev_build is true
+
+- name: Ensure Local Path Exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.local/bin"
+    state: directory
+    mode: "0755"
+
+- name: Copy DWM Binary to Local Path
+  ansible.builtin.copy:
+    src: "{{ dwm_location }}/dwm"
+    dest: "{{ ansible_env.HOME }}/.local/bin/dwm"
+    remote_src: true
+
+- name: Setup xinitrc
+  ansible.builtin.template:
+    src: xinitrc.j2
+    dest: "{{ ansible_env.HOME }}/.xinitrc"

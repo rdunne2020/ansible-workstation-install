@@ -1,0 +1,19 @@
+---
+dwm_packages:
+  - libX11-devel
+  - libXinerama-devel
+  - libXft-devel
+  - imlib2-devel
+  - libxcb-devel
+  - unzip
+  - flameshot
+  - lxappearance
+  - feh
+  - mate-polkit
+  - picom
+  - amixer
+  - thunar
+  - flameshot
+  - synergy
+  - dunst
+  - bear

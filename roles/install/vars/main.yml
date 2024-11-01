@@ -1,6 +1,6 @@
 ---
 dnf_packages:
-  - alacritty
+  - btop
   - code
   - exa
   - fd-find
@@ -15,6 +15,7 @@ dnf_packages:
   - neovim
   - python3-pip
   - pipx
+  - procs
   - ranger
   - stow
   - tmux

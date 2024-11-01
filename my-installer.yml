@@ -17,3 +17,8 @@
     - role: dotfile
       become: false
       ansible_become_method: su
+    - role: dwm
+      ansible_become_method: su
+      become: false
+      remote_user: "{{ ansible_user }}"
+      when: is_virtual_machine
