@@ -27,6 +27,36 @@
     cmd: bear -- make
     creates: "{{ dwm_location}}/slstatus/slstatus"
 
+- name: Install DWM Binary To Global Path for SDDM
+  ansible.builtin.command:
+    chdir: "{{ dwm_location }}"
+    cmd: make install
+    creates: "/usr/local/bin/dwm"
+  become: true
+  become_user: root
+  become_method: su
+
+- name: Install slstatus Binary To Global Path for SDDM
+  ansible.builtin.command:
+    chdir: "{{ dwm_location }}/slstatus"
+    cmd: make install
+    creates: "/usr/local/bin/slstatus"
+  become: true
+  become_user: root
+  become_method: su
+
+- name: Install SDDM Conf
+  ansible.builtin.copy:
+    src: sddm.conf
+    dest: /etc/sddm.conf
+    mode: '0644'
+    owner: root
+    group: root
+  become: true
+  become_user: root
+  become_method: su
+
+
 - name: Ensure Local Path Exists
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.local/bin"
@@ -51,3 +81,19 @@
   ansible.builtin.template:
     src: xinitrc.j2
     dest: "{{ ansible_env.HOME }}/.xinitrc"
+
+- name: Set The Graphical Target as Default
+  block:
+    - name: "Get current systemd default"
+      ansible.builtin.command: "systemctl get-default"
+      changed_when: false
+      register: systemdefault
+
+    - name: "Set default to graphical target"
+      ansible.builtin.command: "systemctl set-default graphical.target"
+      when: "'graphical' not in systemdefault.stdout"
+      changed_when: true
+  become: true
+  become_user: root
+  become_method: su
+

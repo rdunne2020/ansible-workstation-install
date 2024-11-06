@@ -17,3 +17,5 @@ dwm_packages:
   - synergy
   - dunst
   - bear
+  - sddm
+  - sddm-kcm
