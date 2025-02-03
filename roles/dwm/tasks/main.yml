@@ -36,6 +36,12 @@
   become_user: root
   become_method: su
 
+- name: Add rofi config to config dir
+  ansible.builtin.copy:
+    src: "{{ dwm_location }}/config/rofi
+    dest: "/home/{{ ansible_user }}/.config/"
+    remote_src: true
+
 - name: Install slstatus Binary To Global Path for SDDM
   ansible.builtin.command:
     chdir: "{{ dwm_location }}/slstatus"
