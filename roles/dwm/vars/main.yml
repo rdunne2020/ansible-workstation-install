@@ -10,6 +10,7 @@ dwm_packages:
   - lxappearance
   - feh
   - mate-polkit
+  - rofi
   - picom
   - amixer
   - thunar
@@ -19,3 +20,5 @@ dwm_packages:
   - bear
   - sddm
   - sddm-kcm
+  - xrandr
+  - xorg-x11-server-Xorg
