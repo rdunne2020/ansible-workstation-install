@@ -15,6 +15,7 @@
     repo: "{{ dotfile_repo }}"
     dest: "{{ dotfile_local_location }}"
     version: "{{ dotfile_repo_branch }}"
+    accept_newhostkey: true
   become: false
 
 - name: Create the config directory if it doesn't exist

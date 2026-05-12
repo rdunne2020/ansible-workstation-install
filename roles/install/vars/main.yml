@@ -1,8 +1,7 @@
 ---
 dnf_packages:
-  - alacritty
-  - code
-  - exa
+  - gawk
+  - eza
   - fd-find
   - ffmpeg
   - flatpak
@@ -21,12 +20,10 @@ dnf_packages:
   - unzip # necessary for Mason
   - zsh
   - zoxide
+
+gui:
   # COPR
   - wezterm
-  # Cargo
-  # - bat
-  # - duf
-  # - ripgrep
-
+  - code
 flatpaks:
   - obsidian

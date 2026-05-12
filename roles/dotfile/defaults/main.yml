@@ -1,5 +1,5 @@
 ---
-dotfile_repo: "https://github.com/rdunne2020/dotfiles.git"
+dotfile_repo: "ssh://git@github.com/rdunne2020/dotfiles.git"
 dotfile_repo_branch: main
 dotfile_local_location: "~/Code/Dotfiles"
 dotfile_packages:
